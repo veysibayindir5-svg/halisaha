@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+:root {
+  --green: #22c55e;
+  --orange: #f97316;
+  --blue: #2563eb;
+  --gray: #9ca3af;
+  --yellow: #eab308;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 min-h-screen;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+/* ===================== ANIMATIONS ===================== */
+
+@keyframes pulse-glow-green {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5), 0 0 8px rgba(34, 197, 94, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0), 0 0 18px rgba(34, 197, 94, 0.5);
+  }
+}
+
+@keyframes pulse-glow-orange {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5), 0 0 8px rgba(249, 115, 22, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0), 0 0 18px rgba(249, 115, 22, 0.5);
+  }
+}
+
+@keyframes pulse-glow-blue {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4), 0 0 6px rgba(37, 99, 235, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0), 0 0 14px rgba(37, 99, 235, 0.4);
+  }
+}
+
+@keyframes pulse-glow-yellow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.6), 0 0 8px rgba(234, 179, 8, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(234, 179, 8, 0), 0 0 20px rgba(234, 179, 8, 0.6);
+  }
+}
+
+@keyframes pulse-glow-gray {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(100, 116, 139, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px rgba(100, 116, 139, 0);
+  }
+}
+
+@keyframes blink-badge {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes float-icon {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes btn-pop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Timetable cell */
+.slot-available {
+  @apply bg-green-500 hover:bg-green-400 cursor-pointer text-white transition-all duration-150;
+  animation: pulse-glow-green 2.5s ease-in-out infinite;
+}
+
+.slot-available:hover {
+  animation: none;
+}
+
+.slot-pending {
+  @apply bg-orange-500 text-white cursor-not-allowed;
+  animation: blink-badge 1.8s ease-in-out infinite;
+}
+
+.slot-approved {
+  @apply bg-blue-600 text-white cursor-not-allowed;
+}
+
+.slot-past {
+  @apply bg-gray-200 text-gray-400 cursor-not-allowed;
+}
+
+.slot-subscriber {
+  background: #eab308;
+  color: #1a1a1a;
+  font-weight: 800;
+  cursor: not-allowed;
+  animation: pulse-glow-yellow 2s ease-in-out infinite;
+  border: 2px solid #ca8a04;
+}
+
+/* Animated feature icons on homepage */
+.feature-icon {
+  animation: float-icon 3s ease-in-out infinite;
+}
+
+.feature-icon:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.feature-icon:nth-child(3) {
+  animation-delay: 2s;
+}
+
+/* Admin action buttons */
+.btn-approve {
+  @apply flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-bold text-white bg-green-600 hover:bg-green-500 transition-all shadow-md;
+  animation: pulse-glow-green 2s ease-in-out infinite;
+}
+
+.btn-approve:hover {
+  animation: btn-pop 0.3s ease-in-out;
+}
+
+.btn-cancel {
+  @apply flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-bold text-white bg-red-500 hover:bg-red-400 transition-all shadow-md;
+}
+
+.btn-delete {
+  @apply flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-bold text-white bg-red-700 hover:bg-red-600 transition-all shadow;
+}
+
+.btn-archive {
+  @apply flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-bold text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all shadow;
+  animation: pulse-glow-gray 2.8s ease-in-out infinite;
+}
+
+.btn-edit {
+  @apply flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-bold text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md;
+  animation: pulse-glow-blue 2.4s ease-in-out infinite;
+}
+
+.btn-subscriber {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  background: #eab308;
+  border: 2px solid #ca8a04;
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.4);
+  transition: all 0.2s;
+  animation: pulse-glow-yellow 2s ease-in-out infinite;
+}
+
+.btn-subscriber:hover {
+  background: #facc15;
+  animation: none;
+}
+
+.btn-unsubscriber {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #854d0e;
+  background: #fef9c3;
+  border: 2px solid #eab308;
+  transition: all 0.2s;
+}
+
+.btn-unsubscriber:hover {
+  background: #fef08a;
+}
+
+/* Admin table row */
+.admin-row:hover {
+  @apply bg-gray-50;
+}
+
+/* Status badge pulse for pending */
+.badge-pending {
+  animation: blink-badge 1.6s ease-in-out infinite;
+}
